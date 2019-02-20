@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Cacu"
+             x:Class="Cacu.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="plainButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#eee"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="40" />
+            </Style>
+            <Style x:Key="darkerButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ddd"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="40" />
+            </Style>
+            <Style x:Key="orangeButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#E8AD00"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="40" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding ResultNumber}"  Grid.Row="0" HorizontalTextAlignment="End" VerticalTextAlignment="End" TextColor="Black"
+        FontSize="60" Grid.ColumnSpan="4" />
+            <Button Text = "C" Grid.Row="1" Grid.Column="0"       
+        Style="{StaticResource darkerButton}" Command="{Binding OnButton}" CommandParameter="Clear" />
+
+            <Button Text = "+/-" Grid.Row="1" Grid.Column="1"           
+        Style="{StaticResource darkerButton}"  Command="{Binding OnButton}" CommandParameter="Reverse"/>
+
+            <Button Text = "%" Grid.Row="1" Grid.Column="2"                    
+        Style="{StaticResource darkerButton}"  Command="{Binding OnButton}"  CommandParameter="Percent" />
+
+            <Button Text = "÷" Grid.Row="1" Grid.Column="3"      
+        Style="{StaticResource orangeButton}" Command="{Binding OnButton}" CommandParameter="/" />
+
+            <Button Text = "7" Grid.Row="2" Grid.Column="0"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}" CommandParameter="7" />
+
+            <Button Text = "8" Grid.Row="2" Grid.Column="1"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}"  CommandParameter="8"/>
+
+            <Button Text = "9" Grid.Row="2" Grid.Column="2"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}" CommandParameter="9" />
+
+            <Button Text = "X" Grid.Row="2" Grid.Column="3"
+        Style="{StaticResource orangeButton}" Command="{Binding OnButton}" CommandParameter="*" />
+
+            <Button Text = "4" Grid.Row="3" Grid.Column="0"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}"   CommandParameter="4"/>
+
+            <Button Text = "5" Grid.Row="3" Grid.Column="1"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}"  CommandParameter="5" />
+
+            <Button Text = "6" Grid.Row="3" Grid.Column="2"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}"  CommandParameter="6" />
+
+
+            <Button Text = "-" Grid.Row="3" Grid.Column="3"
+        Style="{StaticResource orangeButton}"  Command="{Binding OnButton}"  CommandParameter="-"/>
+
+            <Button Text = "1" Grid.Row="4" Grid.Column="0"
+        Style="{StaticResource plainButton}"  Command="{Binding OnButton}"  CommandParameter="1"/>
+
+            <Button Text = "2" Grid.Row="4" Grid.Column="1"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}"  CommandParameter="2"/>
+
+            <Button Text = "3" Grid.Row="4" Grid.Column="2"
+        Style="{StaticResource plainButton}" Command="{Binding OnButton}"  CommandParameter="3" />
+
+            <Button Text = "+" Grid.Row="4" Grid.Column="3"
+        Style="{StaticResource orangeButton}" Command="{Binding OnButton}"  CommandParameter="+"/>
+
+
+            <Button Text = "0" Grid.ColumnSpan="2"    Grid.Row="5" Grid.Column="0"       
+       Style="{StaticResource plainButton}" Command="{Binding OnButton}"  CommandParameter="0" />
+
+            <Button Text = "." Grid.Row="5" Grid.Column="2"        
+        Style="{StaticResource plainButton}"   Command="{Binding OnButton}" CommandParameter="DecimalPoint"  />
+
+            <Button Text = "=" Grid.Row="5" Grid.Column="3"     
+        Style="{StaticResource orangeButton}"  Command="{Binding OnButton}" CommandParameter="Equal"  />
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
