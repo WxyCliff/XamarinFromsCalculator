@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -91,6 +92,12 @@ namespace Cacu
                             this.CheckDecimalPoint();
                             this.ResultNumber = Calculate();
                             mathList.Clear();
+
+                            Task.Run(async () =>
+                            {
+                                await this.ResultNumber.SpeakNowDefaultSettings();
+                            });
+
                             break;
                         case "Clear":
                             this.ResultNumber = "0";
@@ -168,31 +175,5 @@ namespace Cacu
         string resultNumber = "0";
         List<string> mathList = new List<string>();
         bool useMathSymbol = false;
-    }
-
-
-
-    /// <summary>
-    /// 擴充方法 (應該cs檔統一放擴充方法)
-    /// </summary>
-    public static class MyExtensions
-    {
-        /// <summary>
-        /// 小數點擷取
-        /// </summary>
-        public static string CutString(this string text, int decimalLength)
-        {
-
-            if (text.Length >= decimalLength)
-            {
-
-                return text.Substring(0, decimalLength);
-            }
-            else
-            {
-                return text;
-            }
-        }
-
     }
 }
