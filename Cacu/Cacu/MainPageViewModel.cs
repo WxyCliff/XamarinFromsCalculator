@@ -124,6 +124,7 @@ namespace Cacu
                 catch (Exception ex)
                 {
                     Console.Write(ex.Message);
+                    string xxx = "20190411";
                 }
             });
         }
